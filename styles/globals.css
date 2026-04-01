@@ -35,8 +35,43 @@ a {
   text-decoration: none;
 }
 
-@media (prefers-color-scheme: dark) {
-  html {
-    color-scheme: dark;
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+html, body {
+  width: 100%;
+  height: 100%;
+  overflow-x: hidden;        /* no sideways sliding */
+  overscroll-behavior: none; /* no top/bottom rubber-band bounce */
+  touch-action: pan-y;       /* allow vertical scroll only */
+  position: fixed;           /* prevents page from shifting */
+  inset: 0;                  /* locks the viewport */
+}
+
+@media (max-width: 768px) {
+  html, body {
+    overflow-x: hidden;        /* no sideways scroll */
+    overscroll-behavior: none; /* no bounce top/bottom */
+    touch-action: pan-y;       /* only vertical scroll allowed */
+    height: 100%;
+    width: 100%;
   }
 }

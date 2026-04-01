@@ -1,0 +1,136 @@
+/* ========================== CONFIRMATION PAGE ========================== */
+
+.confirmation-page {
+  min-height: 100vh;
+  width: 100%;
+  background-image: url("/images/dirtySoap.jpg");
+  background-position: center;
+  background-size: cover;
+  background-repeat: no-repeat;
+  background-attachment: fixed;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: clamp(16px, 4vw, 40px);
+  font-family: 'Lucida Handwriting', cursive;
+  color: #fff;
+}
+
+/* CARD */
+.confirmation-page-card {
+  width: 100%;
+  max-width: 420px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 22px;
+}
+
+/* TEXT */
+.confirmation-page-title {
+  font-size: 1.8rem;
+  text-shadow: 0 2px 6px rgba(0,0,0,0.7);
+  mix-blend-mode: difference;
+}
+
+.confirmation-page-desc {
+  font-size: 1.3rem;
+  text-align: center;
+  text-shadow: 0 2px 6px rgba(0,0,0,0.7);
+}
+
+/* FORM */
+.confirmation-page-form {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+}
+
+/* PICKER WRAP — NO FLEX, NO CENTERING */
+.confirmation-page-picker-wrap {
+  width: 100%;
+  position: relative;
+}
+
+/* INPUT */
+.confirmation-page-input {
+  width: 100%;
+  height: 52px;
+  background: transparent;
+  border: none;
+  outline: none;
+  cursor: pointer;
+  color: transparent;
+  caret-color: transparent;
+  position: relative;
+  z-index: 2;
+}
+
+/* Hide native text */
+.confirmation-page-input::-webkit-calendar-picker-indicator {
+  opacity: 0;
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  cursor: pointer;
+}
+
+.confirmation-page-input::-webkit-datetime-edit,
+.confirmation-page-input::-webkit-datetime-edit-text,
+.confirmation-page-input::-webkit-datetime-edit-fields-wrapper,
+.confirmation-page-input::-webkit-datetime-edit-month-field,
+.confirmation-page-input::-webkit-datetime-edit-day-field,
+.confirmation-page-input::-webkit-datetime-edit-year-field,
+.confirmation-page-input::-webkit-datetime-edit-hour-field,
+.confirmation-page-input::-webkit-datetime-edit-minute-field {
+  color: transparent;
+}
+
+/* ICONS */
+.confirmation-page-icon {
+  -webkit-text-fill-color: rgba(255,245,220,0.95) !important;
+  -webkit-text-stroke: 0.4px rgba(255,245,220,0.95) !important;
+  color: #fff;
+  mix-blend-mode: difference;
+  text-shadow:
+    0 1px 2px rgba(0,0,0,0.9),
+    0 2px 4px rgba(0,0,0,0.6),
+    0 0 3px rgba(0,0,0,0.4),
+    0 0 4px rgba(255,255,255,0.3);
+  animation: confirmation-page-breathe 6s ease-in-out infinite;
+}
+
+/* STRONGER FLOAT */
+@keyframes confirmation-page-breathe {
+  0% { transform: translateY(0px); }
+  50% { transform: translateY(-10px); }
+  100% { transform: translateY(0px); }
+}
+
+/* ICON SIZES */
+.confirmation-page-heart { font-size: 2.4rem; cursor: pointer; }
+.confirmation-page-diamond { font-size: 2.6rem; }
+.confirmation-page-arrow { font-size: 2.4rem; }
+
+/* ICON STACK — PERFECT CENTER */
+.confirmation-page-icon-stack {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 18px;
+}
+
+/* BUTTONS */
+.confirmation-page-btn {
+  all: unset;
+  cursor: pointer;
+}
+
+/* EMPTY STATE */
+.confirmation-page-no-service {
+  text-align: center;
+  margin-top: 40px;
+}

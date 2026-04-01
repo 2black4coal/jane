@@ -1,0 +1,175 @@
+/* ==========================
+   SUCCESS PAGE — SPA STYLE
+========================== */
+.checkout-success-page {
+  min-height: 100vh;
+  width: 100%;
+  background-image: url("/images/dirtySoap.jpg");
+  background-position: center;
+  background-size: cover;
+  background-repeat: no-repeat;
+  background-attachment: fixed;
+
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: clamp(20px, 5vw, 40px);
+
+  font-family: 'Lucida Handwriting', cursive;
+  animation: fadeIn 1s ease forwards;
+  opacity: 0;
+}
+
+/* ==========================
+   CONTENT
+========================== */
+.checkout-success-content {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: clamp(14px, 3vw, 24px);
+  text-align: center;
+}
+
+/* ==========================
+   HERO ICON
+========================== */
+.checkout-success-hero {
+  font-size: clamp(4rem, 10vw, 6rem);
+  color: #fff;
+  -webkit-text-fill-color: rgba(255, 245, 220, 0.95) !important;
+  -webkit-text-stroke: 0.01px rgba(255, 245, 220, 0.95);
+
+  text-shadow:
+    0 1px 0 rgba(0,0,0,0.9),
+    0 2px 2px rgba(0,0,0,0.6),
+    0 0 3px rgba(0,0,0,0.4),
+    0 -1px 1px rgba(255,255,255,0.2),
+    0 0 2px rgba(255,255,255,0.1);
+
+  mix-blend-mode: difference;
+
+  animation: breathe 6s ease-in-out infinite,
+             shimmer 2s linear infinite alternate,
+             floatY 4s ease-in-out infinite;
+}
+
+/* ==========================
+   TEXT
+========================== */
+.checkout-success-title {
+  font-size: clamp(1.6rem, 5vw, 2.2rem);
+  font-weight: 200;
+  color: #fff;
+  -webkit-text-fill-color: rgba(255, 245, 220, 0.95) !important;
+  -webkit-text-stroke: 0.01px rgba(255, 245, 220, 0.95);
+
+  text-shadow:
+    0 1px 0 rgba(0,0,0,0.9),
+    0 2px 2px rgba(0,0,0,0.6),
+    0 0 3px rgba(0,0,0,0.4),
+    0 -1px 1px rgba(255,255,255,0.2),
+    0 0 2px rgba(255,255,255,0.1);
+
+  mix-blend-mode: difference;
+}
+
+.checkout-success-message {
+  font-size: clamp(1rem, 3.5vw, 1.3rem);
+  line-height: 2;
+  color: #fff;
+
+  text-shadow:
+    0 1px 0 rgba(0,0,0,0.9),
+    0 2px 2px rgba(0,0,0,0.6),
+    0 0 3px rgba(0,0,0,0.4),
+    0 -1px 1px rgba(255,255,255,0.2),
+    0 0 2px rgba(255,255,255,0.1);
+}
+
+/* ==========================
+   ACTION ICONS
+========================== */
+.checkout-success-actions {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+  margin-top: 10px;
+}
+
+.checkout-success-actions button {
+  all: unset;
+  cursor: pointer;
+  text-align: center;
+}
+
+/* ICON */
+.checkout-success-icon {
+  font-size: 1.9rem;
+  color: #fff;
+  -webkit-text-fill-color: rgba(255, 245, 220, 0.95) !important;
+  -webkit-text-stroke: 0.01px rgba(255, 245, 220, 0.95);
+
+  text-shadow:
+    0 1px 0 rgba(0,0,0,0.9),
+    0 2px 2px rgba(0,0,0,0.6),
+    0 0 3px rgba(0,0,0,0.4),
+    0 -1px 1px rgba(255,255,255,0.2),
+    0 0 2px rgba(255,255,255,0.1);
+
+  mix-blend-mode: difference;
+
+  animation: floatY 4s ease-in-out infinite;
+}
+
+.checkout-success-actions button:hover .checkout-success-icon {
+  transform: translateY(-2px) scale(1.05);
+  opacity: 0.9;
+}
+
+/* ==========================
+   ANIMATIONS
+========================== */
+@keyframes breathe {
+  0%   { transform: scale(1); opacity: 0.9; }
+  50%  { transform: scale(1.05); opacity: 1; }
+  100% { transform: scale(1); opacity: 0.9; }
+}
+
+@keyframes shimmer {
+  0%   { text-shadow: 0 0 3px rgba(255,255,255,0.2); }
+  50%  { text-shadow: 0 0 6px rgba(255,255,255,0.4); }
+  100% { text-shadow: 0 0 3px rgba(255,255,255,0.2); }
+}
+
+@keyframes floatY {
+  0%, 100% { transform: translateY(0); }
+  50% { transform: translateY(-6px); }
+}
+
+@keyframes fadeIn {
+  from { opacity: 0; }
+  to { opacity: 1; }
+}
+
+/* ==========================
+   MOBILE
+========================== */
+@media (max-width: 600px) {
+  .checkout-success-actions {
+    gap: 14px;
+  }
+  .checkout-success-icon {
+    font-size: 2.6rem;
+  }
+.checkout-success-hero {
+  font-size: clamp(6rem, 22vw, 10rem);
+}
+
+
+
+  .checkout-success-message {
+    font-size: clamp(1.4rem, 4.5vw, 2.75rem);
+    line-height: 1.1 !important;
+  }
+}

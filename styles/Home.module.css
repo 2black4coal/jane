@@ -1,141 +1,146 @@
-.page {
-  --background: #fafafa;
-  --foreground: #fff;
-
-  --text-primary: #000;
-  --text-secondary: #666;
-
-  --button-primary-hover: #383838;
-  --button-secondary-hover: #f2f2f2;
-  --button-secondary-border: #ebebeb;
-
-  display: flex;
-  min-height: 100vh;
-  align-items: center;
-  justify-content: center;
-  font-family: var(--font-geist-sans);
-  background-color: var(--background);
-}
-
-.main {
-  display: flex;
-  min-height: 100vh;
+/* ==========================
+   PAGE
+========================== */
+.home-page-container {
+  position: relative;
   width: 100%;
-  max-width: 800px;
-  flex-direction: column;
-  align-items: flex-start;
-  justify-content: space-between;
-  background-color: var(--foreground);
-  padding: 120px 60px;
-}
-
-.intro {
-  display: flex;
-  flex-direction: column;
-  align-items: flex-start;
-  text-align: left;
-  gap: 24px;
-}
-
-.intro h1 {
-  max-width: 320px;
-  font-size: 40px;
-  font-weight: 600;
-  line-height: 48px;
-  letter-spacing: -2.4px;
-  text-wrap: balance;
-  color: var(--text-primary);
-}
-
-.intro p {
-  max-width: 440px;
-  font-size: 18px;
-  line-height: 32px;
-  text-wrap: balance;
-  color: var(--text-secondary);
-}
-
-.intro a {
-  font-weight: 500;
-  color: var(--text-primary);
-}
-
-.ctas {
-  display: flex;
-  flex-direction: row;
-  width: 100%;
-  max-width: 440px;
-  gap: 16px;
-  font-size: 14px;
-}
-
-.ctas a {
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  height: 40px;
-  padding: 0 16px;
-  border-radius: 128px;
-  border: 1px solid transparent;
-  transition: 0.2s;
+  min-height: 100vh;
+  background: #02040a;
+  overflow: hidden;
   cursor: pointer;
-  width: fit-content;
-  font-weight: 500;
+
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
 }
 
-a.primary {
-  background: var(--text-primary);
-  color: var(--background);
-  gap: 8px;
+/* CINEMA FRAME */
+.home-cinema-frame {
+  position: relative;
+  width: 100%;
+  height: 100%;
+  overflow: hidden;
 }
 
-a.secondary {
-  border-color: var(--button-secondary-border);
+/* IMAGE — HERO */
+.home-hero-image {
+  width: 100%;
+  height: auto;
+  max-height: 100vh;
+  object-position: center 0%;
+  display: block;
+  object-fit: contain;
 }
 
-/* Enable hover only on non-touch devices */
-@media (hover: hover) and (pointer: fine) {
-  a.primary:hover {
-    background: var(--button-primary-hover);
-    border-color: transparent;
+/* OVERLAY */
+.home-overlay {
+  position: absolute;
+  inset: 0;
+  background: rgba(0,0,0,0.35);
+  pointer-events: none;
+}
+
+/* ==========================
+   RAIN — LIGHT & SLOW
+========================== */
+.home-rain {
+  position: absolute;
+  inset: 0;
+  z-index: 3;
+  pointer-events: none;
+}
+
+.home-rain-drop {
+  position: absolute;
+  left: calc(var(--x) * 100%);
+  top: -40px;
+
+  width: 2.3px;
+  height: 23px;
+  border-radius: 999px;
+
+  background: linear-gradient(
+    to bottom,
+    transparent,
+    rgba(255,255,255,0.28)
+  );
+
+  animation: homeDropFall var(--duration, 7s) linear infinite;
+  animation-delay: calc(var(--delay) * -6s);
+}
+
+@keyframes homeDropFall {
+  to {
+    transform: translateY(120vh);
   }
-
-  a.secondary:hover {
-    background: var(--button-secondary-hover);
-    border-color: transparent;
-  }
 }
 
+/* ==========================
+   SPLASHES — REDUCED
+========================== */
+.home-splashes {
+  position: absolute;
+  bottom: 0;
+  width: 100%;
+  height: 25px;
+  z-index: 4;
+  pointer-events: none;
+}
+
+.home-splash {
+  position: absolute;
+  left: calc(var(--x) * 100%);
+  bottom: 0;
+
+  width: 5px;
+  height: 5px;
+  background: rgba(255,255,255,0.25);
+  border-radius: 50%;
+
+  animation: homeSplashUp 1.2s ease-out infinite;
+}
+
+@keyframes homeSplashUp {
+  0% { transform: translateY(0) scale(0.3); opacity: 0.5; }
+  100% { transform: translateY(-10px) scale(1); opacity: 0; }
+}
+
+/* ==========================
+   LIGHTNING — SOFTER
+========================== */
+.home-lightning {
+  position: absolute;
+  inset: 0;
+  z-index: 4;
+  pointer-events: none;
+
+  background: radial-gradient(
+    circle at top,
+    rgba(255,255,255,0.06),
+    transparent 70%
+  );
+
+  opacity: 0;
+  animation: homeLightning 30s infinite;
+}
+
+@keyframes homeLightning {
+  0%, 48%, 100% { opacity: 0; }
+  50% { opacity: 0.08; }
+}
+
+/* ==========================
+   RESPONSIVE
+========================== */
 @media (max-width: 600px) {
-  .main {
-    padding: 48px 24px;
+  .home-rain-drop {
+    height: 18px;
+    width: 2.1px;
   }
 
-  .intro {
-    gap: 16px;
-  }
-
-  .intro h1 {
-    font-size: 32px;
-    line-height: 40px;
-    letter-spacing: -1.92px;
-  }
-}
-
-@media (prefers-color-scheme: dark) {
-  .logo {
-    filter: invert();
-  }
-
-  .page {
-    --background: #000;
-    --foreground: #000;
-
-    --text-primary: #ededed;
-    --text-secondary: #999;
-
-    --button-primary-hover: #ccc;
-    --button-secondary-hover: #1a1a1a;
-    --button-secondary-border: #1a1a1a;
+  .home-splash {
+    width: 4px;
+    height: 4px;
   }
 }

@@ -1,0 +1,113 @@
+/* ==========================
+   PAGE
+========================== */
+.home-page-container {
+  position: relative;
+  width: 100%;
+  min-height: 100vh;
+  background: #02040a;
+  overflow: hidden;
+  cursor: pointer;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+/* CINEMA FRAME */
+.home-cinema-frame {
+  position: relative;
+  width: 100%;
+  height: 100%;
+  overflow: hidden;
+}
+
+/* IMAGE — HERO (FULL + CLEAN) */
+.home-hero-image {
+  width: 100%;
+  height: 100vh;
+  object-fit: cover;
+  object-position: center;
+  display: block;
+}
+
+/* ==========================
+   RAIN — NATURAL
+========================== */
+.home-rain {
+  position: absolute;
+  inset: 0;
+  z-index: 3;
+  pointer-events: none;
+}
+
+.home-rain-drop {
+  position: absolute;
+  left: calc(var(--x) * 100%);
+  top: -40px;
+
+  width: 1.1px;
+  height: var(--height);
+  border-radius: 999px;
+
+  background: linear-gradient(
+    to bottom,
+    transparent,
+    rgba(255,255,255,var(--opacity))
+  );
+
+  animation: homeDropFall var(--duration) linear infinite;
+  animation-delay: calc(var(--delay) * -1s);
+}
+
+@keyframes homeDropFall {
+  to {
+    transform: translateY(160vh); /* increase this number for more fall */
+  }
+}
+
+
+/* ==========================
+   SPLASH — SUBTLE
+========================== */
+.home-splashes {
+  position: absolute;
+  bottom: 0;
+  width: 100%;
+  height: 20px;
+  z-index: 4;
+  pointer-events: none;
+}
+
+.home-splash {
+  position: absolute;
+  left: calc(var(--x) * 100%);
+  bottom: 0;
+
+  width: 3px;
+  height: 3px;
+  background: rgba(255,255,255,0.18);
+  border-radius: 50%;
+
+  animation: homeSplashUp 0.7s ease-out infinite;
+}
+
+@keyframes homeSplashUp {
+  0% { transform: translateY(0) scale(0.4); opacity: 0.4; }
+  100% { transform: translateY(-6px) scale(1); opacity: 0; }
+}
+
+/* ==========================
+   RESPONSIVE
+========================== */
+@media (max-width: 600px) {
+  .home-rain-drop {
+    height: 14px;
+    width: 1.5px;
+  }
+
+  .home-splash {
+    width: 2.5px;
+    height: 2.5px;
+  }
+}

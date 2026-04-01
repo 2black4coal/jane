@@ -1,0 +1,178 @@
+/* ============================================
+   PAGE
+============================================ */
+.checkout-page {
+  min-height: 100vh;
+  width: 100%;
+  background-image: url('/images/dirtySoap.jpg');
+  background-position: center;
+  background-size: cover;
+  background-repeat: no-repeat;
+  background-attachment: fixed;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 70px 20px 80px;
+  font-family: 'Lucida Handwriting', cursive;
+  font-weight: 200;
+  color: #fff;
+}
+
+/* ============================================
+   EMPTY STATE
+============================================ */
+.checkout-empty {
+  text-align: center;
+  margin-top: 120px;
+}
+
+.checkout-add-btn {
+  background: transparent;
+  border: 1px solid rgba(255,245,220,0.95);
+  border-radius: 6px;
+  font-size: 2.6rem;
+  padding: 6px 12px;
+  cursor: pointer;
+  color: rgba(255,245,220,0.95);
+}
+
+/* ============================================
+   CARD
+============================================ */
+.checkout-card {
+  width: 100%;
+  max-width: 480px;
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+  background: transparent;
+}
+
+/* ============================================
+   TABLE
+============================================ */
+.checkout-table {
+  width: 100%;
+  border-collapse: collapse;
+}
+
+.checkout-table th,
+.checkout-table td {
+  padding: 6px 4px;
+  font-size: 1rem;
+  text-align: center;
+  font-weight: 200;
+  mix-blend-mode: difference;
+}
+
+.checkout-table tr {
+  border-bottom: 1px solid rgba(255,255,255,0.3);
+}
+
+/* ============================================
+   TOTAL
+============================================ */
+.checkout-total {
+  text-align: right;
+  margin-top: 6px;
+}
+
+.checkout-total h3 {
+  font-size: 0.9rem;
+  font-weight: 200;
+}
+
+.checkout-total p {
+  font-size: 1.2rem;
+  font-weight: 200;
+}
+
+/* ============================================
+   FORM
+============================================ */
+.checkout-form {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  margin-top: 10px;
+}
+
+.checkout-form input,
+.checkout-form textarea {
+  width: 100%;
+  padding: 5px 6px;
+  background: transparent;
+  border: none;
+  border-bottom: 1px solid rgba(255,255,255,0.5);
+  font-family: 'Lucida Handwriting', cursive;
+  font-size: 0.95rem;
+  font-weight: 200;
+  color: #fff;
+  outline: none;
+}
+
+.checkout-form textarea {
+  border: 1px solid rgba(255,255,255,0.4);
+  border-radius: 6px;
+  min-height: 50px;
+}
+
+/* ============================================
+   ADDRESS ROW
+============================================ */
+.checkout-address-row {
+  display: flex;
+  gap: 6px;
+}
+
+.checkout-address-row input {
+  flex: 1;
+}
+
+/* ============================================
+   FUSED ICON STACK (SUBMIT + ADD)
+============================================ */
+.checkout-icon-stack {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 4px;
+  margin-top: 28px;
+}
+
+.checkout-submit,
+.checkout-add-btn {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 58px;
+  height: 58px;
+  border-radius: 8px;
+  font-size: 2.2rem;
+  padding: 0;
+  background: transparent;
+  border: 1px solid rgba(255,245,220,0.95);
+  color: rgba(255,245,220,0.95);
+  cursor: pointer;
+}
+
+.checkout-submit:hover,
+.checkout-add-btn:hover {
+  background: rgba(255,255,255,0.08);
+}
+
+/* ============================================
+   RESPONSIVE — MOBILE
+============================================ */
+@media (max-width: 480px) {
+  .checkout-submit,
+  .checkout-add-btn {
+    width: 52px;
+    height: 52px;
+    font-size: 2rem;
+  }
+
+  .checkout-icon-stack {
+    gap: 3px;
+  }
+}
