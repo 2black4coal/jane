@@ -1,32 +1,28 @@
 "use client";
 
-import { useRouter, useSearchParams } from "next/navigation";
+import { useRouter } from "next/navigation";
 import { useEffect, useState } from "react";
 import "../../styles/mybookings.css";
 
 export default function MyBookings() {
   const router = useRouter();
-  const search = useSearchParams();
 
   const [bookings, setBookings] = useState([]);
-  const [hydrated, setHydrated] = useState(false);
 
-  // Load bookings safely (client only)
+  // Load bookings + handle query params (client only)
   useEffect(() => {
+    // Load existing bookings
     const saved = JSON.parse(localStorage.getItem("my-bookings")) || [];
-    setBookings(saved);
-    setHydrated(true);
-  }, []);
 
-  // Handle new booking from Confirmation page
-  useEffect(() => {
-    if (!hydrated) return;
+    // Read query params safely
+    const params = new URLSearchParams(window.location.search);
 
-    const serviceId = search.get("serviceId");
-    const name = search.get("name");
-    const price = search.get("price");
-    const appointmentTime = search.get("appointmentTime");
+    const serviceId = params.get("serviceId");
+    const name = params.get("name");
+    const price = params.get("price");
+    const appointmentTime = params.get("appointmentTime");
 
+    // If new booking exists in URL → add it
     if (serviceId && name && price && appointmentTime) {
       const newBooking = {
         serviceId,
@@ -35,14 +31,17 @@ export default function MyBookings() {
         appointmentTime,
       };
 
-      const updated = [...bookings, newBooking];
+      const updated = [...saved, newBooking];
       setBookings(updated);
       localStorage.setItem("my-bookings", JSON.stringify(updated));
 
-      // Remove query params from URL
+      // Clean URL after adding
       router.replace("/my-bookings");
+    } else {
+      // No new booking → just load existing
+      setBookings(saved);
     }
-  }, [hydrated]);
+  }, []);
 
   const deleteBooking = (index) => {
     const updated = bookings.filter((_, i) => i !== index);
@@ -91,13 +90,12 @@ export default function MyBookings() {
               <span className="mybookings-page-icon">+</span>
             </button>
 
-           <button
-  className="mybookings-page-btn mybookings-page-btn-summary"
-  onClick={() => router.push("/checkout")}
->
-  <span className="mybookings-page-icon">✨</span>
-  
-</button>
+            <button
+              className="mybookings-page-btn mybookings-page-btn-summary"
+              onClick={() => router.push("/checkout")}
+            >
+              <span className="mybookings-page-icon">✨</span>
+            </button>
           </div>
         </>
       )}
